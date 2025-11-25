@@ -1,0 +1,28 @@
+import { useEffect, useState } from "react";
+
+
+const Effect = () => {
+
+    const [info,setInfo] = useState([])
+
+    useEffect (()=>{
+        fetch('https://dummyjson.com/quotes')
+        .then(response => response.json())
+        .then(data => setInfo(data.quote))
+        .catch(error => console.error(error))
+    },[])
+    
+    return (
+        <>
+        <h2>
+            {info.map((e,i)=>(
+                <p key={i}>
+                    {e.quote} <br />
+                    {e.author}
+                </p>
+            ))}
+        </h2>
+        </>
+    )
+}
+export default Effect;
