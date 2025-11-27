@@ -3,12 +3,16 @@ import { useEffect, useState } from "react";
 
 const Effect = () => {
 
-    const [info,setInfo] = useState([])
+    const [info,setInfo] = useState([
+      { quote: "...", author: "..." },
+    
+       
+    ])
 
     useEffect (()=>{
         fetch('https://dummyjson.com/quotes')
         .then(response => response.json())
-        .then(data => setInfo(data.quote))
+        .then(data => setInfo(data.quotes))
         .catch(error => console.error(error))
     },[])
     
